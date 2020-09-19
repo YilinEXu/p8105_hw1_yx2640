@@ -13,6 +13,8 @@ library(tidyverse)
 
 ## Problem 1
 
+### First code chunk
+
 __Create a data frame__
 
 ```{r}
@@ -44,4 +46,31 @@ as.numeric(pull(prob1_df, samp_gt0))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, fac_vec))
 ```
-Character vectors can't be written as numeric.
+Character vectors can't be written as numeric.The corresponding factor levels will be returned for the factor vectors. It kinda helps explain what happens in the mean part, since character can't be written as numeric, it is not meaningful for taking the mean of the factors.
+
+###Second code chunk
+
+```{r}
+as.numeric(pull(prob1_df, samp_gt0))*pull(prob1_df, Nor_dis)
+as.factor(pull(prob1_df, samp_gt0))*pull(prob1_df, Nor_dis)
+as.numeric(as.factor(pull(prob1_df, samp_gt0)))*pull(prob1_df, Nor_dis)
+```
+
+## Problem 2
+
+Load _penguins_ dataset
+```{r, results="hide"}
+data("penguins", package = "palmerpenguins")
+penguins
+```
+
+__Description of the penguins dataset__  
+There are 8 varaibles in the penguins dataset, which are their species, island, bill length, bill depth, flipper length, body mass, sex and year.  
+The bill length is from `r min(pull(penguins, bill_length_mm), na.rm=TRUE)` to `r max(pull(penguins, bill_length_mm), na.rm=TRUE)`, the mean of the bill length is `r mean(pull(penguins, bill_length_mm), na.rm=TRUE)`. 
+
+Their bill depth is between `r min(pull(penguins, bill_depth_mm), na.rm=TRUE)` and `r max(pull(penguins, bill_depth_mm),na.rm=TRUE)` with a mean of `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`.  
+
+Their body mass is between `r min(pull(penguins, body_mass_g), na.rm=TRUE)` and `r max(pull(penguins, body_mass_g),na.rm=TRUE)` with a mean of `r mean(pull(penguins, body_mass_g), na.rm=TRUE)`.  
+
+The penguin dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns of data.  
+Their flipper length has a mean of `r mean(pull(penguins, flipper_length_mm), na.rm=TRUE)`.  
