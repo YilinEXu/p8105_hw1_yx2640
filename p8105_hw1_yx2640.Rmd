@@ -1,12 +1,47 @@
 ---
 title: "Homework 1"
-author: "Elaine Xu"
-date: "9/17/2020"
+author: Elaine Xu
 output: github_document
 ---
 
 This is my solution to HW1
 
 ```{r}
-
+library(tidyverse)
 ```
+
+
+## Problem 1
+
+__Create a data frame__
+
+```{r}
+prob1_df = 
+  tibble(
+    Nor_dis = rnorm(10),
+    samp_gt0 = Nor_dis > 0,
+    char_vec = c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"),
+    fac_vec = factor(c("low", "mid", "low", "high", "mid", "mid", "low", "high", "low", "high"))
+  )
+```
+
+__Take the mean of each variable in my dataframe.__
+
+```{r}
+mean(pull(prob1_df, Nor_dis))
+mean(pull(prob1_df, samp_gt0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, fac_vec))
+```
+
+Only the variables that are numbers and logical can take the mean, character and factors can't take the mean.
+
+__Applies the as.numeric function to the logical, character, and factor variables__
+
+```{r hide}
+as.numeric(pull(prob1_df, Nor_dis))
+as.numeric(pull(prob1_df, samp_gt0))
+as.numeric(pull(prob1_df, char_vec))
+as.numeric(pull(prob1_df, fac_vec))
+```
+Character vectors can't be written as numeric.
