@@ -8,6 +8,7 @@ This is my solution to HW1
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
 ```
 
 
@@ -66,6 +67,7 @@ penguins
 
 __Description of the penguins dataset__  
 There are 8 varaibles in the penguins dataset, which are their species, island, bill length, bill depth, flipper length, body mass, sex and year.  
+
 The bill length is from `r min(pull(penguins, bill_length_mm), na.rm=TRUE)` to `r max(pull(penguins, bill_length_mm), na.rm=TRUE)`, the mean of the bill length is `r mean(pull(penguins, bill_length_mm), na.rm=TRUE)`. 
 
 Their bill depth is between `r min(pull(penguins, bill_depth_mm), na.rm=TRUE)` and `r max(pull(penguins, bill_depth_mm),na.rm=TRUE)` with a mean of `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`.  
@@ -73,4 +75,16 @@ Their bill depth is between `r min(pull(penguins, bill_depth_mm), na.rm=TRUE)` a
 Their body mass is between `r min(pull(penguins, body_mass_g), na.rm=TRUE)` and `r max(pull(penguins, body_mass_g),na.rm=TRUE)` with a mean of `r mean(pull(penguins, body_mass_g), na.rm=TRUE)`.  
 
 The penguin dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns of data.  
+
 Their flipper length has a mean of `r mean(pull(penguins, flipper_length_mm), na.rm=TRUE)`.  
+
+__Scatterplot__
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+Export first scatteplot
+```{r}
+ggsave("p8105_hw1_scatterplot.jpeg",plot = last_plot())
+```
+
