@@ -38,7 +38,7 @@ Only the variables that are numbers and logical can take the mean, character and
 
 __Applies the as.numeric function to the logical, character, and factor variables__
 
-```{r hide}
+```{r, results="hide"}
 as.numeric(pull(prob1_df, Nor_dis))
 as.numeric(pull(prob1_df, samp_gt0))
 as.numeric(pull(prob1_df, char_vec))
